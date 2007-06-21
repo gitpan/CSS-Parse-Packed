@@ -3,7 +3,7 @@ package CSS::Parse::Packed;
 use warnings;
 use strict;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use base qw/CSS::Parse/;
 use Carp;
@@ -16,6 +16,7 @@ sub parse_string {
     my $string = shift;
 
     $string =~ s{\r\n|\r|\n}{ }g;
+    $string =~ s{(?:\@[\S\s]*?;)}{}g;
     $self->_parse_string($string);
     $self->_create_styles;
 }
@@ -26,12 +27,12 @@ sub _parse_string {
 
     for my $str (grep { /\S/ } split /(?<=\})/, $string) {
         my ($selectors, $properties) = $str =~ m/^\s*([^{]+?)\s*\{(.*)\}\s*$/
-            or croak "Invalid style data '$_'";
+            or carp "Invalid style data '$_'", next;
 
         my @selectors = split /\s*,\s*/, $selectors;
         for my $property (grep { /\S/ } split /\;/, $properties) {
             my ($name, $val) = $property =~ m/^\s*([\w._-]+)\s*:\s*(.*?)\s*$/
-                or croak "Invalid property '$_'";
+                or carp "Invalid property '$_'", next;
             for my $selector (@selectors) {
                 $self->stash->{$selector}->{$name} = $val;
             }
@@ -73,7 +74,7 @@ CSS::Parse::Packed - A CSS::Parse module packed duplicated selectors.
 
 =head1 VERSION
 
-This document describes CSS::Parse::Packed version 0.0.1
+This document describes CSS::Parse::Packed version 0.02
 
 =head1 SYNOPSIS
 
@@ -85,14 +86,14 @@ This document describes CSS::Parse::Packed version 0.0.1
 This module is a parser for CSS.pm. It parsing CSS by regular expression
 based on CSS::Parse::Lite and packed duplicated selectors.
 
-=head2 Example
+=head1 EXAMPLE
 
 Original is:
 
     body { background-color:#FFFFFF; font-size: 1em; }
     body { padding:6px; font-size: 1.5em; }
 
-After parings is:
+After parsing:
 
     body { padding: 6px; background-color: #FFFFFF; font-size: 1.5em }
 
@@ -102,11 +103,11 @@ L<CSS>, L<CSS::Parse::Lite>
 
 =head1 AUTHOR
 
-Hiroshi Sakai  C<< <ziguzagu@gmail.com> >>
+Hiroshi Sakai  C<< <ziguzagu@cpan.org> >>
 
 =head1 LICENCE AND COPYRIGHT
 
-Copyright (c) 2007, Hiroshi Sakai C<< <ziguzagu@gmail.com> >>. All rights reserved.
+Copyright (c) 2007, Hiroshi Sakai C<< <ziguzagu@cpan.org> >>. All rights reserved.
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself. See L<perlartistic>.
