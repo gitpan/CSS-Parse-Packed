@@ -1,15 +1,25 @@
---- #YAML:1.0
-name:                CSS-Parse-Packed
-version:             0.02
-abstract:            A CSS::Parse module packed duplicated selectors.
-license:             ~
-generated_by:        ExtUtils::MakeMaker version 6.31
-distribution_type:   module
-requires:     
-    CSS:                           0
-    Test::Base:                    0
-meta-spec:
-    url:     http://module-build.sourceforge.net/META-spec-v1.2.html
-    version: 1.2
+---
+abstract: 'A CSS::Parse module packed duplicated selectors.'
 author:
-    - Hiroshi Sakai <ziguzagu@cpan.org>
+  - 'Hiroshi Sakai  C<< <ziguzagu@cpan.org> >>'
+build_requires:
+  ExtUtils::MakeMaker: 6.42
+configure_requires:
+  ExtUtils::MakeMaker: 6.42
+distribution_type: module
+generated_by: 'Module::Install version 0.85'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: CSS-Parse-Packed
+no_index:
+  directory:
+    - inc
+    - t
+requires:
+  CSS: 0
+  Filter::Util::Call: 0
+resources:
+  license: http://dev.perl.org/licenses/
+version: 0.03
