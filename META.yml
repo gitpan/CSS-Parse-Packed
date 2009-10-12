@@ -19,8 +19,8 @@ no_index:
     - t
     - xt
 requires:
-  CSS: 0
+  CSS: 1.08
   Filter::Util::Call: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.04
+version: 0.05
