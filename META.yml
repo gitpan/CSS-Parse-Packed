@@ -3,11 +3,14 @@ abstract: 'A CSS::Parse module packed duplicated selectors.'
 author:
   - 'Hiroshi Sakai  C<< <ziguzagu@cpan.org> >>'
 build_requires:
-  ExtUtils::MakeMaker: 6.42
+  ExtUtils::MakeMaker: 6.36
+  Test::More: 0.98
 configure_requires:
-  ExtUtils::MakeMaker: 6.42
-distribution_type: module
-generated_by: 'Module::Install version 0.91'
+  CPAN::Meta: 0
+  CPAN::Meta::Prereqs: 0
+  Module::Build: 0.38
+dynamic_config: 0
+generated_by: 'Minilla/v0.8.4, CPAN::Meta::Converter version 2.120921'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -15,12 +18,25 @@ meta-spec:
 name: CSS-Parse-Packed
 no_index:
   directory:
-    - inc
     - t
     - xt
+    - inc
+    - share
+    - eg
+    - examples
+    - author
+    - builder
+provides:
+  CSS::Parse::Packed:
+    file: lib/CSS/Parse/Packed.pm
+    version: 0.06
 requires:
   CSS: 1.08
-  Filter::Util::Call: 0
 resources:
-  license: http://dev.perl.org/licenses/
-version: 0.05
+  bugtracker: https://github.com/ziguzagu/perl-css-parse-packed/issues
+  homepage: https://github.com/ziguzagu/perl-css-parse-packed
+  repository: git://github.com/ziguzagu/perl-css-parse-packed.git
+version: 0.06
+x_contributors:
+  - 'ziguzagu <ziguzagu@de76b589-441d-0410-bc8a-e215e50ce9ae>'
+  - 'ziguzagu <ziguzagu@gmail.com>'

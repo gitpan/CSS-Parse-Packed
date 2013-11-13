@@ -3,7 +3,7 @@ package CSS::Parse::Packed;
 use warnings;
 use strict;
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 use base qw/CSS::Parse/;
 use Carp;
@@ -71,10 +71,6 @@ __END__
 =head1 NAME
 
 CSS::Parse::Packed - A CSS::Parse module packed duplicated selectors.
-
-=head1 VERSION
-
-This document describes CSS::Parse::Packed version 0.02
 
 =head1 SYNOPSIS
 
